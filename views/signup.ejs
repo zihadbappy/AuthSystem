@@ -4,23 +4,55 @@
             <div class="card-header">Sign Up</div>
             <div class="card-body">
                 <br>
-                <form action="/newuser" method="POST">
+                <% include ./partials/messages %>
+                <form action="/users/signup" method="POST">
                     <div class="form-group">
                         <label for="newusername">Name</label>
-                        <input type="text" class="form-control" id="newusername" placeholder="Enter Name">
+                        <input type="text"
+                        name="newusername"
+                        class="form-control"
+                        id="newusername"
+                        placeholder="Enter Name"
+                        value="<%- typeof name != 'undefined' ? name : '' %>">
                     </div>
                     
                     <div class="form-group">
                         <label for="newuseremail">Email Address</label>
-                        <input type="email" class="form-control" id="newuseremail" aria-describedby="emailHelp" placeholder="Enter Email">
+                        <input
+                        type="email"
+                        name="newuseremail"
+                        class="form-control"
+                        id="newuseremail"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter Email">
                       </div>
+
                       <div class="form-group">
                         <label for="newuserpass">Password</label>
-                        <input type="password" class="form-control" id="newuserpass" placeholder="Create Password">
+                        <input
+                        name="newuserpass"
+                        type="password"
+                        class="form-control"
+                        id="newuserpass"
+                        placeholder="Create Password">
                       </div>
+
+                      <div class="form-group">
+                        <label for="confirmuserpass">Confirm Password</label>
+                        <input
+                        name="confirmuserpass"
+                        type="password"
+                        class="form-control"
+                        id="confirmuserpass"
+                        placeholder="Retype Password">
+                      </div>
+
                       <div class="form-group">
                           <button type="submit" class="btn btn-primary">Register</button>
                     </div>
+
+                    <br>
+                    <p>Already have an account? <a href="/users/login">Log In</a></p>
                 </form>
                     
             </div>

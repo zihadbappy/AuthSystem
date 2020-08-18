@@ -87,3 +87,17 @@ a {
   margin-left: 30%;
   margin-right: 30%
 }
+
+.loginform p
+{
+  font-size: larger;
+}
+
+.signupform p
+{
+  font-size: larger;
+}
+
+#Partials{
+  color: #000;
+}
