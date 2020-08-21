@@ -1,11 +1,37 @@
 <% if(typeof errors!='undefined'){ %>
     <% errors.forEach(function(error){ %>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-           <div id="Partials">
+           <div class="Partials">
             <%= error.msg  %>
            </div>
           </div>
     
    <% }); %>
 
+<% } %>
+
+
+<% if(success_msg!=''){ %>
+    <div class="alert alert-success" role="alert">
+        <div class="Partials">
+            <%= success_msg  %>
+       </div>
+    </div>
+<% } %>
+
+
+<% if(error_msg!=''){ %>
+    <div class="alert alert-warning" role="alert">
+        <div class="Partials">
+            <%= error_msg  %>
+       </div>
+    </div>
+<% } %>
+
+<% if(error!=''){ %>
+    <div class="alert alert-warning" role="alert">
+        <div class="Partials">
+            <%= error%>
+       </div>
+    </div>
 <% } %>

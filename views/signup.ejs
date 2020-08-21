@@ -7,33 +7,34 @@
                 <% include ./partials/messages %>
                 <form action="/users/signup" method="POST">
                     <div class="form-group">
-                        <label for="newusername">Name</label>
+                        <label for="username">Name</label>
                         <input type="text"
-                        name="newusername"
+                        name="username"
                         class="form-control"
-                        id="newusername"
+                        id="username"
                         placeholder="Enter Name"
-                        value="<%- typeof name != 'undefined' ? name : '' %>">
+                        value="<%- typeof username != 'undefined' ? username : '' %>">
                     </div>
                     
                     <div class="form-group">
-                        <label for="newuseremail">Email Address</label>
+                        <label for="useremail">Email Address</label>
                         <input
                         type="email"
-                        name="newuseremail"
+                        name="useremail"
                         class="form-control"
-                        id="newuseremail"
+                        id="useremail"
                         aria-describedby="emailHelp"
-                        placeholder="Enter Email">
+                        placeholder="Enter Email"
+                        value="<%- typeof useremail != 'undefined' ? useremail : '' %>">
                       </div>
 
                       <div class="form-group">
-                        <label for="newuserpass">Password</label>
+                        <label for="userpass">Password</label>
                         <input
-                        name="newuserpass"
+                        name="userpass"
                         type="password"
                         class="form-control"
-                        id="newuserpass"
+                        id="userpass"
                         placeholder="Create Password">
                       </div>
 

@@ -5,16 +5,22 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var expressLayouts = require('express-ejs-layouts');
 var mongoose = require('mongoose');
+var flash = require('connect-flash');
+var session = require('express-session'); 
+const passport = require('passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
 
+//Passport Config
+require('./config/passport')(passport);
+
 //DB config
 const db= require('./config/keys').MongoURI;
 // Connect to Mongo
-mongoose.connect(db, {useNewUrlParser:true})
+mongoose.connect(db, {useNewUrlParser:true, useUnifiedTopology: true})
 .then(()=>console.log("Mongodb go brr..."))
 .catch(err=> console.log(err));
 
@@ -29,6 +35,34 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Express Session
+app.use(
+  session({
+    secret: 'secret2',
+    resave: true,
+    saveUninitialized: true
+  })
+);
+
+
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+//Connect Flash
+app.use(flash());
+
+//Globar vars
+app.use((req, res, next)=>{
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
+
+
+// Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
