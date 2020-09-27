@@ -19,7 +19,8 @@ module.exports = function(passport){
             bcrypt.compare(userpass, user.userpass, (err, isMatch)=>{
                 if(err) throw err;
                 if(isMatch){
-
+                    if(!user.active)
+                    return done(null, false, {message: "You need to verify email first"});
                     return done(null, user);
                 }
                 else {
