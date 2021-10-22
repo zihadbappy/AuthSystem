@@ -8,6 +8,9 @@ var mongoose = require('mongoose');
 var flash = require('connect-flash');
 var session = require('express-session'); 
 const passport = require('passport');
+var dotenv = require('dotenv').config(); 
+
+console.log(dotenv)
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -18,7 +21,7 @@ var app = express();
 require('./config/passport')(passport);
 
 //DB config
-const db= require('./config/keys').MongoURI;
+const db= process.env.MONGO_URI;
 // Connect to Mongo
 mongoose.connect(db, {useNewUrlParser:true, useUnifiedTopology: true})
 .then(()=>console.log("Mongodb go brr..."))
