@@ -13,4 +13,8 @@ Run it in your local machine:
 
     git clone https://github.com/zihadbappy/EZget.git
     cd EZget
-    npm run start
+    npm install
+
+```
+*set your mongo uri on line no.24 of app.js*
+npm run start
